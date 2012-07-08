@@ -1,5 +1,14 @@
 class rvm::dependencies::ubuntu {
 
+  group {
+    "puppet":
+    ensure => present;
+  }
+
+  exec { "apt-update":
+    command => "/usr/bin/apt-get -y update"
+  }
+
   if ! defined(Package['build-essential'])      { package { 'build-essential':      ensure => installed } }
   if ! defined(Package['bison'])                { package { 'bison':                ensure => installed } }
   if ! defined(Package['openssl'])              { package { 'openssl':              ensure => installed } }
